@@ -1,0 +1,12 @@
+{
+  "itemGroup.selene.selene": "Selene",
+  "item.selene.selenic_circlet": "Selenic Circlet",
+  "item.selene.selenic_pendant": "Selenic Pendant",
+  "item.selene.selenic_braces": "Selenic Braces",
+  "item.selene.selenic_amethyst": "Selenic Amethyst",
+  "tooltip.selene.luna": "%s/15000 Luna",
+  "tooltip.selene.set.header": "Part of the %s set",
+  "tooltip.selene.set.more": "Hold §aSHIFT§7 to see full set",
+  "tooltip.selene.set.effect": "Full set bonus: %s",
+  "tooltip.selene.set.moonblessing": "Blessing of the Moon"
+}

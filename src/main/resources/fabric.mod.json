@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "selene",
+  "version": "${version}",
+  "name": "Selene",
+  "description": "Bringing light to a lonely world",
+  "authors": [
+    "Lemma"
+  ],
+  "contact": {
+    "repo": "https://github.com/boundarybreaker/selene"
+  },
+  "license": "MIT",
+  "icon": "assets/selene/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "gay.lemmaeof.selene.client.SeleneClient"
+    ],
+    "main": [
+      "gay.lemmaeof.selene.Selene"
+    ]
+  },
+  "mixins": [
+    "selene.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.6",
+    "fabric": "*",
+    "minecraft": "1.17"
+  }
+}
