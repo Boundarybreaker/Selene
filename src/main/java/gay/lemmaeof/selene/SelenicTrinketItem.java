@@ -41,16 +41,27 @@ public class SelenicTrinketItem extends TrinketItem {
 		}
 		tag.putInt("Luna", luna);
 		TrinketComponent component = TrinketsApi.TRINKET_COMPONENT.get(entity);
-		if (component.isEquipped(Selene.SELENIC_CIRCLET)
-				&& component.isEquipped(Selene.SELENIC_PENDANT)
-				&&component.isEquipped(Selene.SELENIC_BRACES)) {
-			entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 300));
+		if (shouldApplyBonus(component)) {
+			entity.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 120000, 0, true, false, true));
+		} else if (entity.hasStatusEffect(StatusEffects.NIGHT_VISION)) {
+			if (entity.getStatusEffect(StatusEffects.NIGHT_VISION).isAmbient()) {
+				entity.removeStatusEffect(StatusEffects.NIGHT_VISION);
+			}
 		}
+	}
+
+	private boolean shouldApplyBonus(TrinketComponent component) {
+		return component.isEquipped(stack ->
+				stack.getItem() == Selene.SELENIC_CIRCLET && stack.getOrCreateTag().getInt("Luna") > 0)
+				&& component.isEquipped(stack ->
+				stack.getItem() == Selene.SELENIC_PENDANT && stack.getOrCreateTag().getInt("Luna") > 0)
+				&& component.isEquipped(stack ->
+				stack.getItem() == Selene.SELENIC_BRACES && stack.getOrCreateTag().getInt("Luna") > 0);
 	}
 
 	@Override
 	public int getItemBarStep(ItemStack stack) {
-		return Math.round(13.0F - (float)stack.getOrCreateTag().getInt("Luna") * 13.0F / 15000F);
+		return Math.round(((float)stack.getOrCreateTag().getInt("Luna") / 15000F) * 13.0F);
 	}
 
 	@Override

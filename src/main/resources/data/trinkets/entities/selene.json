@@ -2,6 +2,7 @@
   "entities": ["player"],
   "slots": [
     "hand/glove",
-    "head/hat"
+    "head/hat",
+    "chest/necklace"
   ]
 }
