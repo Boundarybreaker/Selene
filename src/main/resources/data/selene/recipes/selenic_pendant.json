@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " c ",
+        "c c",
+        " S "
+    ],
+    "key": {
+        "c": {
+            "item": "minecraft:copper_ingot"
+        },
+        "S": {
+            "item": "selene:selenic_amethyst"
+        }
+    },
+    "result": {
+        "item": "selene:selenic_pendant",
+        "count": 1
+    }
+}

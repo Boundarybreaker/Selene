@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "# #",
+        "c c"
+    ],
+    "key": {
+        "#": {
+            "item": "selene:selenic_amethyst"
+        },
+        "c": {
+            "item": "minecraft:copper_ingot"
+        }
+    },
+    "result": {
+        "item": "selene:selenic_braces",
+        "count": 1
+    }
+}

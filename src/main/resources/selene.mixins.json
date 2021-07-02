@@ -4,6 +4,7 @@
   "package": "gay.lemmaeof.selene.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "MixinItemEntity"
   ],
   "client": [
   ],
