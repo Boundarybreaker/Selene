@@ -12,6 +12,8 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 
 @Mixin(ItemEntity.class)
@@ -28,6 +30,7 @@ public abstract class MixinItemEntity extends Entity {
 	private void injectSelenicTicking(CallbackInfo info) {
 		if (this.getStack().getItem() == Items.AMETHYST_SHARD && this.world != null && !this.world.isClient) {
 			if (this.isTouchingWater() && !this.world.isDay() && this.world.getMoonPhase() == 0) {
+				world.playSound(null, getPos().x, getPos().y, getPos().z, SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.BLOCKS, 1f, 1f);
 				this.setStack(new ItemStack(Selene.SELENIC_AMETHYST, getStack().getCount()));
 			}
 		}
