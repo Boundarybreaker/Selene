@@ -42,7 +42,7 @@ public abstract class SelenicTrinketModel extends BipedEntityModel<LivingEntity>
 			if (world.isDay()) return baseLight;
 			if (world.getMoonPhase() == 0) return LightmapTextureManager.field_32767;
 		}
-		int currentLuna = Math.min(15, (stack.getOrCreateTag().getInt("Luna") / 1000) + 1);
+		int currentLuna = Math.min(15, (stack.getOrCreateNbt().getInt("Luna") / 1000) + 1);
 		return LightmapTextureManager.pack(Math.max(currentLuna, LightmapTextureManager.getBlockLightCoordinates(baseLight)),
 				Math.max(currentLuna, LightmapTextureManager.getSkyLightCoordinates(baseLight)));
 	}

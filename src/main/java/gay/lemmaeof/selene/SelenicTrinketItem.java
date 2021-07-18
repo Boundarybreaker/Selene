@@ -31,7 +31,7 @@ public class SelenicTrinketItem extends TrinketItem {
 
 	@Override
 	public void tick(ItemStack stack, SlotReference slot, LivingEntity entity) {
-		NbtCompound tag = stack.getOrCreateTag();
+		NbtCompound tag = stack.getOrCreateNbt();
 		World world = entity.world;
 		int luna = tag.getInt("Luna");
 		if (world.isSkyVisible(entity.getBlockPos()) && (world.isDay() || world.getMoonPhase() == 0)) {
@@ -52,21 +52,21 @@ public class SelenicTrinketItem extends TrinketItem {
 
 	private boolean shouldApplyBonus(TrinketComponent component) {
 		return component.isEquipped(stack ->
-				stack.getItem() == Selene.SELENIC_CIRCLET && stack.getOrCreateTag().getInt("Luna") > 0)
+				stack.getItem() == Selene.SELENIC_CIRCLET && stack.getOrCreateNbt().getInt("Luna") > 0)
 				&& component.isEquipped(stack ->
-				stack.getItem() == Selene.SELENIC_PENDANT && stack.getOrCreateTag().getInt("Luna") > 0)
+				stack.getItem() == Selene.SELENIC_PENDANT && stack.getOrCreateNbt().getInt("Luna") > 0)
 				&& component.isEquipped(stack ->
-				stack.getItem() == Selene.SELENIC_BRACES && stack.getOrCreateTag().getInt("Luna") > 0);
+				stack.getItem() == Selene.SELENIC_BRACES && stack.getOrCreateNbt().getInt("Luna") > 0);
 	}
 
 	@Override
 	public int getItemBarStep(ItemStack stack) {
-		return Math.round(((float)stack.getOrCreateTag().getInt("Luna") / 15000F) * 13.0F);
+		return Math.round(((float)stack.getOrCreateNbt().getInt("Luna") / 15000F) * 13.0F);
 	}
 
 	@Override
 	public boolean isItemBarVisible(ItemStack stack) {
-		return stack.getOrCreateTag().getInt("Luna") != 15000;
+		return stack.getOrCreateNbt().getInt("Luna") != 15000;
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class SelenicTrinketItem extends TrinketItem {
 	@Override
 	public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
 		super.appendTooltip(stack, world, tooltip, context);
-		NbtCompound tag = stack.getOrCreateTag();
+		NbtCompound tag = stack.getOrCreateNbt();
 		tooltip.add(new TranslatableText("tooltip.selene.luna", tag.getInt("Luna")).formatted(Formatting.GRAY));
 		tooltip.add(new TranslatableText("tooltip.selene.set.header",
 				new TranslatableText("tooltip.selene.set.moonblessing").formatted(Formatting.BLUE))
