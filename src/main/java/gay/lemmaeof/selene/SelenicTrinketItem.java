@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -84,7 +85,7 @@ public class SelenicTrinketItem extends TrinketItem {
 				.formatted(Formatting.GRAY));
 		if (world != null && world.isClient) {
 			if (Screen.hasShiftDown()) {
-				PlayerEntity player = MinecraftClient.getInstance().player;
+				ClientPlayerEntity player = MinecraftClient.getInstance().player;
 				TrinketComponent component = TrinketsApi.TRINKET_COMPONENT.get(player);
 				boolean hasCirclet = component.isEquipped(Selene.SELENIC_CIRCLET);
 				boolean hasPendant = component.isEquipped(Selene.SELENIC_PENDANT);
